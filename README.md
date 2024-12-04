@@ -1,38 +1,69 @@
-# sv
+# 💧 Drippy
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Drippy is a token streaming protocol built on the Ethena BLE testnet that enables real-time, continuous payments for ETH and USDe tokens. Think of it as your own decentralized payment streaming service.
 
-## Creating a project
+## 🚀 Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Stream ETH and USDe tokens in real-time
+- Create customizable payment streams with flexible durations
+- Cancel streams with automatic fair balance distribution
+- Withdraw available funds at any time
+- Secure implementation with reentrancy protection
+- Modern SvelteKit frontend for easy interaction
 
-```bash
-# create a new project in the current directory
-npx sv create
+## 🛠 Tech Stack
 
-# create a new project in my-app
-npx sv create my-app
+### Smart Contracts
+- Solidity ^0.8.0
+- OpenZeppelin Contracts
+- Remix
+
+### Frontend
+- SvelteKit
+- ethers.js
+- Web3Modal
+
+
+## 💻 Usage
+
+### Creating a Stream
+```solidity
+// Create a USDe stream
+uint256 streamId = drippy.createStream(
+    recipient,  // Address of the recipient
+    amount,     // Amount to stream
+    duration,   // Duration in seconds
+    false       // isNative (false for USDe, true for ETH)
+);
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+### Withdrawing from a Stream
+```solidity
+// Withdraw available balance
+drippy.withdrawFromStream(streamId, amount);
 ```
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
+### Canceling a Stream
+```solidity
+// Cancel stream and distribute remaining balance
+drippy.cancelStream(streamId);
 ```
 
-You can preview the production build with `npm run preview`.
+## 🔐 Security
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- Built with OpenZeppelin's secure contract library
+- Implements ReentrancyGuard for all sensitive functions
+- Comprehensive input validation
+- Balance checks before transfers
+
+## 📄 Contract Addresses
+
+- Drippy Ethena BLE Testnet: `0x315c7B1205FcbDC5c8c38C2A4CAA7de0b890Fc2f`
+
+
+
+## 🙏 Acknowledgments
+
+- OpenZeppelin for secure contract libraries
+- Ethena team for the BLE testnet
+- Superfluid for inspiration on token streaming mechanics
