@@ -67,3 +67,12 @@ drippy.cancelStream(streamId);
 - OpenZeppelin for secure contract libraries
 - Ethena team for the BLE testnet
 - Superfluid for inspiration on token streaming mechanics
+
+
+## 📸 Screenshots
+
+
+![Create Stream](./1.png)
+
+![Stream Details](./2.png)
+
